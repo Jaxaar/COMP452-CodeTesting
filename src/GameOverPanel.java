@@ -1,4 +1,5 @@
 import com.opencsv.CSVWriter;
+import org.apache.commons.lang3.ObjectUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -69,30 +70,31 @@ public class GameOverPanel extends JPanel {
      * Sets the game results, updates the UI, and saves results to the log file (if human was playing)
      */
     // TODO: refactor this method
-    public void setGameResults(GameResult result){
+    public String[] setGameResults(GameResult result){
         this.gameResult = result;
 
         answerTxt.setText("The answer was " + result.correctValue + ".");
-        if(result.numGuesses == 1){
-            numGuessesTxt.setText((result.humanWasPlaying ? "You" : "I") + " guessed it on the first try!");
-        }
-        else {
-            numGuessesTxt.setText("It took " + (result.humanWasPlaying ? "you" : "me") + " " + result.numGuesses + " guesses.");
-        }
+        numGuessesTxt.setText(result.getNumGuessesText());
+
 
         if(result.humanWasPlaying){
             // write stats to file
-            try(CSVWriter writer = new CSVWriter(new FileWriter(StatsFile.FILENAME, true))) {
+            return result.toRecord();
 
-                String [] record = new String[2];
-                record[0] = LocalDateTime.now().toString();
-                record[1] = Integer.toString(result.numGuesses);
-
-                writer.writeNext(record);
-            } catch (IOException e) {
-                // NOTE: In a full implementation, we would log this error and possibly alert the user
-                // NOTE: For this project, you do not need unit tests for handling this exception.
-            }
+//            try(CSVWriter writer = new CSVWriter(new FileWriter(StatsFile.FILENAME, true))) {
+//
+//                String [] record = new String[2];
+//                record[0] = LocalDateTime.now().toString();
+//                record[1] = Integer.toString(result.numGuesses);
+//
+//                writer.writeNext(record);
+//            } catch (IOException e) {
+//                // NOTE: In a full implementation, we would log this error and possibly alert the user
+//                // NOTE: For this project, you do not need unit tests for handling this exception.
+//            }
+        }
+        else{
+            return null;
         }
     }
 }
