@@ -72,9 +72,10 @@ public class GuessTheNumberUI {
         // HINT: Look at what GameOverPanel.setGameResults does now. Your code should do the same operations,
         //       but refactor how those are structured, which means the lambda will need to change.
         JPanel humanGuessesPanel = new HumanGuessesPanel(cardsPanel, gameResult -> {
-            String[] record = gameOverPanel.setGameResults(gameResult);
-            if(record != null){
-                logGameResults(record);
+            gameOverPanel.setGameResults(gameResult);
+            if(gameResult.humanWasPlaying){
+                // write stats to file
+                logGameResults(gameResult.toRecord());
             }
         });
         addToCards(cardsPanel, humanGuessesPanel, ScreenID.HUMAN_PLAY.name());
@@ -85,9 +86,10 @@ public class GuessTheNumberUI {
 
         // COMPUTER_PLAY
         JPanel computerGuessesPanel = new ComputerGuessesPanel(cardsPanel, gameResult -> {
-            String[] record = gameOverPanel.setGameResults(gameResult);
-            if(record != null){
-                logGameResults(record);
+            gameOverPanel.setGameResults(gameResult);
+            if(gameResult.humanWasPlaying){
+                // write stats to file
+                logGameResults(gameResult.toRecord());
             }
         });
         addToCards(cardsPanel, computerGuessesPanel, ScreenID.COMPUTER_PLAY.name());
