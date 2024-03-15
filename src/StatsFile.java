@@ -1,7 +1,9 @@
 import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
@@ -16,6 +18,8 @@ import java.util.TreeMap;
 public class StatsFile extends GameStats {
     public static final String FILENAME = "guess-the-number-stats.csv";
 
+    // Stats will display the number of games in each "bin"
+    // A bin goes from BIN_EDGES[i] through BIN_EDGES[i+1]-1, inclusive
 
     // maps the number of guesses required to the number of games within
     // the past 30 days where the person took that many guesses
@@ -61,7 +65,17 @@ public class StatsFile extends GameStats {
     }
 
     @Override
-    public int maxNumGuesses(){
+    public int maxNumGuesses() {
         return (statsMap.isEmpty() ? 0 : statsMap.lastKey());
+    }
+
+
+    public static void logGameResults(String[] record){
+        try(CSVWriter writer = new CSVWriter(new FileWriter(StatsFile.FILENAME, true))) {
+            writer.writeNext(record);
+        } catch (IOException e) {
+            // NOTE: In a full implementation, we would log this error and possibly alert the user
+            // NOTE: For this project, you do not need unit tests for handling this exception.
+        }
     }
 }

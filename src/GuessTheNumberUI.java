@@ -75,7 +75,7 @@ public class GuessTheNumberUI {
             gameOverPanel.setGameResults(gameResult);
             if(gameResult.humanWasPlaying){
                 // write stats to file
-                logGameResults(gameResult.toRecord());
+                StatsFile.logGameResults(gameResult.toRecord());
             }
         });
         addToCards(cardsPanel, humanGuessesPanel, ScreenID.HUMAN_PLAY.name());
@@ -89,7 +89,7 @@ public class GuessTheNumberUI {
             gameOverPanel.setGameResults(gameResult);
             if(gameResult.humanWasPlaying){
                 // write stats to file
-                logGameResults(gameResult.toRecord());
+                StatsFile.logGameResults(gameResult.toRecord());
             }
         });
         addToCards(cardsPanel, computerGuessesPanel, ScreenID.COMPUTER_PLAY.name());
@@ -186,15 +186,6 @@ public class GuessTheNumberUI {
         card.setPreferredSize(CARD_DIM);
         card.setMinimumSize(CARD_DIM);
         cardsPanel.add(card, name);
-    }
-
-    public static void logGameResults(String[] record){
-        try(CSVWriter writer = new CSVWriter(new FileWriter(StatsFile.FILENAME, true))) {
-            writer.writeNext(record);
-        } catch (IOException e) {
-            // NOTE: In a full implementation, we would log this error and possibly alert the user
-            // NOTE: For this project, you do not need unit tests for handling this exception.
-        }
     }
 }
 

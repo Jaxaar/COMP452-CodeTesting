@@ -1,0 +1,24 @@
+Todo:
+Move logic out of ComputerGuessesPanel
+
+
+Refactor Stats File for testing????
+Write Tests for:
+    - GameResult
+    - StatsFile
+        - GameStats implemented functions
+    - HumanGuessesGame
+    - GuessTheNumberUI?????
+
+Files we don't need to touch:
+    - GameOverPanel
+    - HumanGuessesPanel
+    - StatsPanel
+    - ComputerGuessesPanel
+    - GuessResult
+    - ScreenID
+
+
+Done:
+Moved logic out of Stats Panel
+Moved FileIO out of GameOverPanel and isolated it in GuessTheNumberUI
