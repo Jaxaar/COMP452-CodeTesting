@@ -28,9 +28,9 @@ public class GameResult {
         }
     }
 
-    public String[] toRecord(){
+    public String[] toRecord(LocalDateTime dateTime){
         String [] record = new String[2];
-        record[0] = LocalDateTime.now().toString();
+        record[0] = dateTime.toString();
         record[1] = Integer.toString(numGuesses);
         return record;
     }

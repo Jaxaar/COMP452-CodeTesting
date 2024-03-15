@@ -1,24 +1,25 @@
 Todo:
 Move logic out of ComputerGuessesPanel
-
-
 Refactor Stats File for testing????
 Write Tests for:
-    - GameResult
     - StatsFile
         - GameStats implemented functions
     - HumanGuessesGame
-    - GuessTheNumberUI?????
+    - Any class added
 
-Files we don't need to touch:
+Done:
+Moved logic out of Stats Panel
+Moved FileIO out of GameOverPanel and isolated it in GuessTheNumberUI
+
+Tests written:
+    - GameResult
+
+
+
+Files we don't need to test (Assuming we refactor well):
     - GameOverPanel
     - HumanGuessesPanel
     - StatsPanel
     - ComputerGuessesPanel
     - GuessResult
     - ScreenID
-
-
-Done:
-Moved logic out of Stats Panel
-Moved FileIO out of GameOverPanel and isolated it in GuessTheNumberUI

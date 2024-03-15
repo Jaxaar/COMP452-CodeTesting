@@ -75,7 +75,7 @@ public class GuessTheNumberUI {
             gameOverPanel.setGameResults(gameResult);
             if(gameResult.humanWasPlaying){
                 // write stats to file
-                StatsFile.logGameResults(gameResult.toRecord());
+                StatsFile.logGameResults(gameResult.toRecord(LocalDateTime.now()));
             }
         });
         addToCards(cardsPanel, humanGuessesPanel, ScreenID.HUMAN_PLAY.name());
@@ -89,7 +89,7 @@ public class GuessTheNumberUI {
             gameOverPanel.setGameResults(gameResult);
             if(gameResult.humanWasPlaying){
                 // write stats to file
-                StatsFile.logGameResults(gameResult.toRecord());
+                StatsFile.logGameResults(gameResult.toRecord(LocalDateTime.now()));
             }
         });
         addToCards(cardsPanel, computerGuessesPanel, ScreenID.COMPUTER_PLAY.name());
