@@ -1,10 +1,9 @@
 Todo:
 Move logic out of ComputerGuessesPanel
-Refactor Stats File for testing????
 Write Tests for:
     - StatsFile
         - GameStats implemented functions
-    - HumanGuessesGame
+        - Might need to move csv reading out of the main class
     - Any class added
 
 Done:
@@ -13,6 +12,7 @@ Moved FileIO out of GameOverPanel and isolated it in GuessTheNumberUI
 
 Tests written:
     - GameResult
+    - HumanGuessesGame
 
 
 
