@@ -58,5 +58,14 @@ public class ComputerGuessingGameTest {
         GameResult result = game.finishGame();
         assertTrue(result.correctValue == game.getLastGuess());
     }
+        @Test
+        public void testLowestGuess() {
+            ComputerGuessingGame game = new ComputerGuessingGame();
+            game.lowerBound = 1;
+            game.upperBound = 2;
+            game.makeLowerGuess();
+            assertEquals(1, game.getLastGuess());
+        }
+
 
 }
