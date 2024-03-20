@@ -9,10 +9,13 @@ Write Tests for:
 Done:
 Moved logic out of Stats Panel
 Moved FileIO out of GameOverPanel and isolated it in GuessTheNumberUI
+Moved logic outside of ComputerGuessesPanel into ComputerGuessingGame
 
 Tests written:
     - GameResult
     - HumanGuessesGame
+    - ComputerGuessingGame
+    - StatsFile
 
 
 
